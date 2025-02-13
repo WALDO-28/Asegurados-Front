@@ -1,0 +1,37 @@
+/* Centrar el formulario */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  /* Estilizar el título */
+  
+  
+  /* Ajustar el tamaño de los campos de entrada */
+  mat-form-field {
+    width: 100%; /* Hace que todos los campos tengan el mismo tamaño */
+  }
+  
+  /* Alinear los botones en la parte inferior */
+  .botones-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  /* Botón Cancelar - Rojo */
+  .cancelar {
+    background-color: #ff4d4d;
+    color: white;
+  }
+  
+  /* Botón Guardar - Azul */
+  .guardar {
+    background-color: #007bff;
+    color: white;
+  }
+ 

@@ -1,0 +1,121 @@
+<h2 mat-dialog-title class="titulo">Nuevo Asegurado</h2>
+
+<div mat-dialog-content class="form-container">
+  <form #form="ngForm" class="formulario">
+    <div class="form-grid">
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Numero Identificación</mat-label>
+        <input matInput [(ngModel)]="data.numeroIdentificacion" name="numeroIdentificacion" required>
+        <mat-error *ngIf="form.submitted && !data.numeroIdentificacion">El número de identificación es obligatorio</mat-error>
+      </mat-form-field>
+            
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label> Primer nombre</mat-label>
+        <input matInput [(ngModel)]="data.primerNombre" name="primerNombre" required>
+        <mat-error *ngIf="form.submitted && !data.primerNombre">El nombre es obligatorio</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Segundo Nombre</mat-label>
+        <input matInput [(ngModel)]="data.segundoNombre" name="segundoNombre">
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Primer Apellido</mat-label>
+        <input matInput [(ngModel)]="data.primerApellido" name="primerApellido" required>
+        <mat-error *ngIf="form.submitted && !data.primerApellido">El primer apellido es obligatorio</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Segundo Apellido</mat-label>
+        <input matInput [(ngModel)]="data.segundoApellido" name="segundoApellido" required>
+        <mat-error *ngIf="form.submitted && !data.segundoApellido">El segundo apellido es obligatorio</mat-error>
+      </mat-form-field>
+
+         
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Teléfono</mat-label>
+        <input matInput [(ngModel)]="data.telefono" name="telefono" required>
+        <mat-error *ngIf="form.submitted && !data.telefono">El teléfono es obligatorio</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [(ngModel)]="data.email" name="email" required email>
+        <mat-error *ngIf="form.submitted && !data.email">El email es obligatorio</mat-error>
+        <mat-error *ngIf="form.submitted && data.email && !emailValido()">Formato de email inválido</mat-error>
+      </mat-form-field>
+      
+            <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Fecha Nacimiento</mat-label>
+        <input matInput type="date" [(ngModel)]="data.fechaNacimiento" name="fechaNacimiento" required>
+        <mat-error *ngIf="form.submitted && !data.fechaNacimiento">La fecha de nacimiento es obligatoria</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Valor Estimado</mat-label>
+        <input matInput type="number" [(ngModel)]="data.valorEstimado" name="valorEstimado" required>
+        <mat-error *ngIf="form.submitted && !data.valorEstimado">El valor estimado es obligatorio</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Observaciones</mat-label>
+        <input matInput [(ngModel)]="data.observaciones" name="observaciones">
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+
+<div mat-dialog-actions class="botones-container">
+  <button mat-button class="cancelar" (click)="cancelar()">Cancelar</button>
+  <button mat-button class="guardar" (click)="guardar(form)" [disabled]="form.invalid">Guardar</button>
+</div>
+
+<style>
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .formulario {
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .botones-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .botones-container button {
+    width: 120px;
+  }
+
+  @media (max-width: 600px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .titulo {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+</style>

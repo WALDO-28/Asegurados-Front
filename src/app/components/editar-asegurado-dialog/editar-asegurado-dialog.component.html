@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>Editar Asegurado</h2>
+<div mat-dialog-content>
+  <form #form="ngForm">
+    <mat-form-field>
+      <mat-label>Número identificación</mat-label>
+      <input matInput type="number" [(ngModel)]="data.numeroIdentificacion" name="numeroIdentificacion" required>
+      <mat-error *ngIf="form.submitted && !data.numeroIdentificacion">El número de identificación es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="data.primerNombre" name="primerNombre" required>
+      <mat-error *ngIf="form.submitted && !data.primerNombre">El nombre es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Segundo Nombre</mat-label>
+      <input matInput [(ngModel)]="data.segundoNombre" name="segundoNombre">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Primer Apellido</mat-label>
+      <input matInput [(ngModel)]="data.primerApellido" name="primerApellido" required>
+      <mat-error *ngIf="form.submitted && !data.primerApellido">El primer apellido es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Segundo Apellido</mat-label>
+      <input matInput [(ngModel)]="data.segundoApellido" name="segundoApellido" required>
+      <mat-error *ngIf="form.submitted && !data.segundoApellido">El segundo apellido es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Teléfono</mat-label>
+      <input matInput type="tel" [(ngModel)]="data.telefono" name="telefono" required>
+      <mat-error *ngIf="form.submitted && !data.telefono">El teléfono es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="data.email" name="email" required>
+      <mat-error *ngIf="form.submitted && !data.email">El email es obligatorio</mat-error>
+      <mat-error *ngIf="form.submitted && data.email && !emailValido()">Formato de email inválido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Fecha Nacimiento</mat-label>
+      <input matInput type="text" [(ngModel)]="data.fechaNacimiento" name="fechaNacimiento" required>
+      <mat-error *ngIf="form.submitted && !data.fechaNacimiento">La fecha de nacimiento es obligatoria</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Valor Estimado</mat-label>
+      <input matInput type="number" [(ngModel)]="data.valorEstimado" name="valorEstimado" required>
+      <mat-error *ngIf="form.submitted && !data.valorEstimado">El valor estimado es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Observaciones</mat-label>
+      <input matInput [(ngModel)]="data.observaciones" name="observaciones">
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-button color="primary" (click)="guardar(form)" [disabled]="form.invalid">Guardar</button>
+</div>
