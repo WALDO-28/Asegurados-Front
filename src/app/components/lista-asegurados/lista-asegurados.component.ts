@@ -110,7 +110,7 @@ export class ListaAseguradosComponent implements OnInit {
         this.aseguradoService.ActualizarAsegurado(result).subscribe(() => {
           console.log('Asegurado actualizado en la base de datos');
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: "Registro actualizado exitosamente",
             showConfirmButton: false,
@@ -133,11 +133,11 @@ export class ListaAseguradosComponent implements OnInit {
       if (result) {
         console.log('Nuevo asegurado:', result);
         this.aseguradoService.crearAsegurado(result).subscribe(() => {
-          console.log('Asegurado creado con éxito');
+          console.log(result);
           this.obtenerAsegurados(); // Refrescar la lista
           //this.snackBar.open('Asegurado creado', 'Cerrar', { duration: 3000 });
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: "Registro guardado exitosamente",
             showConfirmButton: false,

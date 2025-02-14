@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError} from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 export interface Asegurado {
   id: number;
@@ -27,7 +28,18 @@ export class AseguradoService {
   obtenerAsegurados(): Observable<Asegurado[]> {
     return this.http.get<Asegurado[]>(this.apiUrl);
   }
+  // crearAsegurado(asegurado: any): Observable<any> {
+  //   return this.http.post<any>(`${this.apiUrl}/crear`, asegurado).pipe(
+  //     catchError(this.handleError)
+  //   );
+  // }
 
+  // private handleError(error: HttpErrorResponse) {
+  //   if (error.status === 400) {
+  //     return throwError(() => new Error(error.error || 'Número de identificación ya registrado.'));
+  //   }
+  //   return throwError(() => new Error('Error inesperado, intenta nuevamente.'));
+  // }
   crearAsegurado(asegurado: Asegurado): Observable<Asegurado> {
     return this.http.post<Asegurado>(this.apiUrl, asegurado);
   }
@@ -40,5 +52,6 @@ export class AseguradoService {
 
     return this.http.put<Asegurado>(`${this.apiUrl}/${asegurado.id}`, asegurado);
     }
+    
 }
 
